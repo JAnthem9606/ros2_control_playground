@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<robot name="rrbot">
+
+  <!-- ===================== -->
+  <!-- Materials -->
+  <!-- ===================== -->
+  <material name="gray">
+    <color rgba="0.6 0.6 0.6 1.0"/>
+  </material>
+  <material name="red">
+    <color rgba="1.0 0.0 0.0 1.0"/>
+  </material>
+  <material name="green">
+    <color rgba="0.0 1.0 0.0 1.0"/>
+  </material>
+
+  <!-- ===================== -->
+  <!-- Base -->
+  <!-- ===================== -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 2"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 2"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <!-- Box inertia: Ixx = m/12*(y^2+z^2), Iyy = m/12*(x^2+z^2), Izz = m/12*(x^2+y^2) -->
+      <inertia
+        ixx="0.6683" ixy="0.0" ixz="0.0"
+        iyy="0.6683" iyz="0.0"
+        izz="0.003333"/>
+    </inertial>
+  </link>
+
+  <!-- ===================== -->
+  <!-- Link 1 -->
+  <!-- ===================== -->
+  <link name="link1">
+    <visual>
+      <origin xyz="0.05 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 1"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 1"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia
+        ixx="0.084167" ixy="0.0" ixz="0.0"
+        iyy="0.084167" iyz="0.0"
+        izz="0.0016667"/>
+    </inertial>
+  </link>
+
+  <!-- ===================== -->
+  <!-- Link 2 -->
+  <!-- ===================== -->
+  <link name="link2">
+    <visual>
+      <origin xyz="0.1 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 1"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 1"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia
+        ixx="0.084167" ixy="0.0" ixz="0.0"
+        iyy="0.084167" iyz="0.0"
+        izz="0.0016667"/>
+    </inertial>
+  </link>
+
+  <!-- ===================== -->
+  <!-- Joint 1 -->
+  <!-- ===================== -->
+  <joint name="joint1" type="continuous">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 2" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <dynamics damping="0.7" friction="0.1"/>
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0"/>
+  </joint>
+
+  <!-- ===================== -->
+  <!-- Joint 2 -->
+  <!-- ===================== -->
+  <joint name="joint2" type="continuous">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 1" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <dynamics damping="0.7" friction="0.1"/>
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0"/>
+  </joint>
+</robot>
