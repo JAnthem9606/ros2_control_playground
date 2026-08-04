@@ -44,7 +44,7 @@ Each manipulator package follows the same structure:
   properties, and joint dynamics (damping/friction)
 - **`view_robot.launch.py`** — RViz + `joint_state_publisher_gui`, so you can
   move the robot with sliders with zero `ros2_control` knowledge required
-- **`display.launch.py`** — full `ros2_control` setup: `controller_manager`,
+- **`robot.launch.py`** — full `ros2_control` setup: `controller_manager`,
   `joint_state_broadcaster`, and both `joint_trajectory_controller` and
   `forward_position_controller` (loaded together, switchable at runtime)
 - **Pure-Python kinematics** — forward/inverse kinematics functions with
