@@ -114,19 +114,6 @@ ros2 control switch_controllers \
   --activate forward_position_controller
 ```
 
-See [`docs/controllers.md`](docs/controllers.md) for a fuller explanation
-of when to use which.
-
----
-
-## Common pitfalls (learned the hard way)
-
-See [`docs/pitfalls.md`](docs/pitfalls.md) for a running list of the
-mistakes that ate the most debugging time while building this — joint
-origin vs. visual origin, `ament_python` packaging gotchas, controller
-name mismatches, and stray nested workspaces from running `colcon build`
-in the wrong directory.
-
 ---
 
 ## Contributing
