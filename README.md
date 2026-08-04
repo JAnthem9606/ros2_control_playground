@@ -83,7 +83,7 @@ touching any controller configuration.
 ### 3. Full control via ros2_control
 
 ```bash
-ros2 launch scara_bot display.launch.py
+ros2 launch scara_bot scara_bot.launch.py
 ```
 
 Then, in another terminal:
